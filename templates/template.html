@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <title>{{ .Title }}</title>
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body class="{{ .Theme }}" data-theme="{{ .Theme }}">
+        <div id="header" class="block">
+            <div class="left">
+                <h1>{{ .Title }}</h1>
+                <h2>RealmStatus.net - Live World of Warcraft Server Status</h2>
+            </div>
+            <div class="right">
+                <a href="#" class="theme-changer" data-theme="light">Light</a>
+                <a href="#" class="theme-changer" data-theme="dark">Dark</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        {{ if .HasRealm }}
+            {{ template "single.html" . }}
+        {{ else }}
+            {{ template "list.html" . }}
+        {{ end }}
+        <div id="footer" class="block">
+            Data last updated at <span id="last-update">{{ .Timestamp }}</span>
+            <br><br>
+            RealmStatus.net {{ .Year }} - Live WoW Server Status
+        </div>
+        <script type="text/javascript" src="/js/lib/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="/js/lib/cookies.min.js"></script>
+        <script type="text/javascript" src="/js/lib/socket.io-1.4.5.js"></script>
+        <script type="text/javascript" src="/js/common.js"></script>
+        {{ range $key, $value := .Scripts }}
+            <script type="text/javascript" src="{{ $value }}"></script>
+        {{ end }}
+    </body>
+</html>

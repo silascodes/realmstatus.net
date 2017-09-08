@@ -1,0 +1,108 @@
+<!--<div id="controls" class="block">
+    <div id="filters" class="sub-block">
+        <h3>Search/Filter</h3>
+        <div class="control-group">
+            <label>Name:</label>
+            <input type="text" data-field="name">
+        </div>
+        <div class="control-group">
+            <label>Region:</label>
+            <select class="filter" data-field="region">
+                <option value="any">Any</option>
+                {{ range $key, $value := .Regions }}
+                    <option>{{ $value }}</option>
+                {{ end }}
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Locale:</label>
+            <select class="filter" data-field="locale">
+                <option value="any">Any</option>
+                {{ range $key, $value := .Locales }}
+                    <option>{{ $value }}</option>
+                {{ end }}
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Type:</label>
+            <select class="filter" data-field="type">
+                <option value="any">Any</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Battlegroup:</label>
+            <select class="filter" data-field="battlegroup">
+                <option value="any">Any</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Timezone:</label>
+            <select class="filter" data-field="timezone">
+                <option value="any">Any</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Status:</label>
+            <select class="filter" data-field="status">
+                <option value="any">Any</option>
+                <option value="UP">Up</option>
+                <option value="DOWN">Down</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Queue:</label>
+            <select class="filter" data-field="queue">
+                <option value="any">Any</option>
+                <option value="YES">Yes</option>
+                <option value="NO">No</option>
+            </select>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="buttons" class="sub-block">
+        <input id="apply-filters" type="submit" value="Apply">
+        <input id="reset-filters" type="reset" value="Reset">
+    </div>
+</div>-->
+<div id="list" class="block">
+    <table class="tablesorter">
+        <thead>
+            <tr>
+                <th>Region</th>
+                <th>Name</th>
+                <th class="drop-3">Type</th>
+                <th class="drop-1">Battlegroup</th>
+                <th class="drop-3">Locale</th>
+                <th class="drop-2">Timezone</th>
+                <th>Status</th>
+                <th class="drop-3">Queue</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $key, $value := .Realms }}
+                <tr class="visible {{ .GetClass }}" data-slug="{{ $value.GetRealSlug }}">
+                    <td data-field="region" data-value="{{ $value.Region }}">{{ $value.GetRegion }}</td>
+                    <td><a href="/wow/realm/{{ $value.Slug }}-{{ $value.Region }}">{{ $value.Name }}</a></td>
+                    <td class="drop-3" data-field="type" data-value="{{ $value.Type }}">{{ $value.GetType }}</td>
+                    <td class="drop-1">{{ $value.Battlegroup }}</td>
+                    <td class="drop-3">{{ $value.GetLocale }}</td>
+                    <td class="drop-2">{{ $value.GetTimezone }}</td>
+                    <td class="live-status">
+                        {{ if $value.Status }}
+                            <span class="good">{{ $value.GetStatus }}</span>
+                        {{ else }}
+                            <span class="bad">{{ $value.GetStatus }}</span>
+                        {{ end }}
+                    </td>
+                    <td class="drop-3 live-queue">
+                        {{ if $value.Queue }}
+                            <span class="bad">{{ $value.GetQueue }}</span>
+                        {{ else }}
+                            <span class="good">{{ $value.GetQueue }}</span>
+                        {{ end }}
+                    </td>
+                </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,333 @@
+/*
+ * General Styles
+ */
+body {
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+
+
+/*
+ * Block Styles
+ */
+.block {
+    width: 100%;
+    margin-bottom: 0.8em;
+    padding: 0.8em;
+}
+
+.sub-block {
+    padding-bottom: 1.6em;
+}
+
+.sub-block:last-of-type {
+    padding-bottom: 0;
+}
+
+.sub-block > h3 {
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-bottom: 0.6em;
+}
+
+
+
+/*
+ * Form Styles
+ */
+.control-group {
+    float: left;
+    padding-right: 1em;
+    height: 30px;
+}
+
+.control-group label {
+    display: block;
+    float: left;
+    padding-top: 3px;
+    padding-right: 5px;
+    text-align: right;
+}
+
+.control-group label,
+.control-group select {
+    width: 100px;
+}
+
+.control-group input {
+    width: 96px;
+}
+
+
+
+/*
+ * Table Styles
+ */
+table {
+    width: 100%;
+}
+
+th {
+    font-weight: bold;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+th, td {
+    padding-top: 0.4em;
+    height: 1.6em;
+}
+
+th.headerSortDown:after {
+    content: " ⏶";
+}
+
+th.headerSortUp:after {
+    content: " ⏷";
+}
+
+
+
+/*
+ * Header Styles
+ */
+#header h1 {
+    font-weight: bold;
+    font-size: 2.4em;
+    margin-bottom: 0.2em;
+}
+
+#header h2 {
+    font-size: 1.4em;
+}
+
+#header .right {
+    padding-right: 1.6em;
+}
+
+
+
+/*
+ * Footer Styles
+ */
+#footer {
+    font-weight: bold;
+}
+
+
+
+/*
+ * List Page Styles
+ */
+#list table tbody tr {
+    display: none;
+}
+
+#list table tbody tr.visible {
+    display: table-row;
+}
+
+
+
+/*
+ * Single Page Styles
+ */
+#single tr > td:first-of-type {
+    font-weight: bold;
+    max-width: 20em;
+    width: 20em;
+}
+
+#single ul.battlegroup-list {
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    display: none;
+}
+
+#single ul.battlegroup-list.visible {
+    display: block;
+}
+
+
+
+/* 
+ * Dark Theme 
+ */
+body.dark {
+    background-color: #1a1a1a;
+    color: #ababab;
+}
+
+body.dark h1,
+body.dark h3,
+body.dark th {
+    color: #fff;
+}
+
+body.dark a:link {
+    color: #ccccff;
+}
+
+body.dark a:visited {
+    color: #9999ff;
+}
+
+body.dark a:hover {
+    color: #5555ff;
+}
+
+body.dark a:active {
+    color: #2222ff;
+}
+
+body.dark .good {
+    color: #77ff77;
+}
+
+body.dark .bad {
+    color: #ff7777;
+}
+
+body.dark .block {
+    border-bottom: 2px solid #000;
+}
+
+body.dark .block:last-of-type {
+    border-bottom: 0;
+}
+
+body.dark th.headerSortDown:after {
+    color: #ffff77;
+}
+
+body.dark th.headerSortUp:after {
+    color: #ffff77;
+}
+
+body.dark tbody tr.highlight {
+    background-color: #111;
+}
+
+body.dark #header {
+    background-color: #111;
+}
+
+body.dark #single tr > td:first-of-type {
+    color: #fff;
+}
+
+body.dark #footer #last-update {
+    color: #fff;
+}
+
+
+
+/*
+ * Light Theme
+ */
+body.light {
+    background-color: #ddd;
+    color: #1a1a1a;
+}
+
+body.light h1,
+body.light h3,
+body.light th {
+    color: #000;
+}
+
+body.light a:link {
+    color: #2222ff;
+}
+
+body.light a:visited {
+    color: #5555ff;
+}
+
+body.light a:hover {
+    color: #9999ff;
+}
+
+body.light a:active {
+    color: #ccccff;
+}
+
+body.light .good {
+    color: #007700;
+}
+
+body.light .bad {
+    color: #770000;
+}
+
+body.light .block {
+    border-bottom: 2px solid #aaa;
+}
+
+body.light .block:last-of-type {
+    border-bottom: 0;
+}
+
+body.light th.headerSortDown:after {
+    color: #999933;
+}
+
+body.light th.headerSortUp:after {
+    color: #999933;
+}
+
+body.light tbody tr.highlight {
+    background-color: #eee;
+}
+
+body.light #header {
+    background-color: #eee;
+}
+
+body.light #single tr > td:first-of-type {
+    color: #000;
+}
+
+body.light #footer #last-update {
+    color: #000;
+}
+
+
+
+
+/*
+ * Media Queries
+ */
+@media (max-width: 1100px) {
+    #list td.drop-1,
+    #list th.drop-1 {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    #list td.drop-2,
+    #list th.drop-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    #list td.drop-3,
+    #list th.drop-3 {
+        display: none;
+    }
+}

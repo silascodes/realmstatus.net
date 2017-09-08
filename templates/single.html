@@ -1,0 +1,80 @@
+<div id="nav" class="block">
+    <a href="/wow/">Back to realm list...</a>
+</div>
+<div id="single" class="block">
+    <table>
+        <tbody>
+            <tr>
+                <td>Status</td>
+                <td class="live-status">
+                    {{ if .Realm.Status }}
+                        <span class="good">{{ .Realm.GetStatus }}</span>
+                    {{ else }}
+                        <span class="bad">{{ .Realm.GetStatus }}</span>
+                    {{ end }}
+                </td>
+            </tr>
+            <tr>
+                <td>Queue</td>
+                <td class="live-queue">
+                    {{ if .Realm.Queue }}
+                        <span class="bad">{{ .Realm.GetQueue }}</span>
+                    {{ else }}
+                        <span class="good">{{ .Realm.GetQueue }}</span>
+                    {{ end }}
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{ .Realm.Name }}</td>
+            </tr>
+            <tr>
+                <td>Region</td>
+                <td>{{ .Realm.GetRegion }}</td>
+            </tr>
+            <tr>
+                <td>Locale</td>
+                <td>{{ .Realm.GetLocale }} ({{ .Realm.Locale }})</td>
+            </tr>
+            <tr>
+                <td>Timezone</td>
+                <td><span id="realm-timezone">{{ .Realm.GetTimezone }}</span> <span id="realm-timezone-short"></span></td>
+            </tr>
+            <tr>
+                <td>Realm Time</td>
+                <td><span id="realm-time">-</span></td>
+            <tr>
+                <td>Type</td>
+                <td>{{ .Realm.GetType }}</td>
+            </tr>
+            <tr>
+                <td>Population</td>
+                <td>{{ .Realm.GetPopulation }}</td>
+            </tr>
+            <tr>
+                <td>Battlegroup</td>
+                <td>
+                    {{ .Realm.Battlegroup }} <a class="battlegroup-toggler" href="#">[<span class="icon">+</span>]</a>
+                    <ul class="battlegroup-list">
+                        {{ range $key, $value := .BattlegroupRealms }}
+                            <li><a href="/wow/realm/{{ $value.GetRealSlug }}">{{ $value.Name }}</a></li>
+                        {{ end }}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Connected Realms</td>
+                <td>
+                    {{ if .Realm.HasConnectedRealms }}
+                        <ul>
+                            {{ range $key, $value := .ConnectedRealms }}
+                                <li><a href="/wow/realm/{{ $value.GetRealSlug }}">{{ $value.Name }}</a></li>
+                            {{ end }}
+                        </ul>
+                    {{ else }}
+                        None
+                    {{ end }}
+                </td>
+        </tbody>
+    </table>
+</div>
